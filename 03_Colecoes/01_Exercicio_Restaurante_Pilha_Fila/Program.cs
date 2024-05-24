@@ -1,7 +1,8 @@
 ﻿int opcaoMenu = 0;
+int numeroPedido = 0;
 
-Queue<string> filaDePedidos = new();
-Stack<string> pilhaDePedidosConcluúdos = new();
+Queue<(int, string)> filaDePedidos = new();
+Stack<(int, string)> pilhaDePedidosConcluúdos = new();
 
 while (opcaoMenu != 5)
 {
@@ -18,8 +19,9 @@ while (opcaoMenu != 5)
     switch (opcaoMenu)
     {
         case 1:
-            Console.WriteLine("Digite seu pedido:");
-            filaDePedidos.Enqueue(Console.ReadLine());
+            Console.WriteLine("Digite o seu pedido:");
+            numeroPedido++;
+            filaDePedidos.Enqueue((numeroPedido, Console.ReadLine() ?? "Pedido desconhecido"));
             break;
 
         case 2:
@@ -43,7 +45,7 @@ while (opcaoMenu != 5)
             Console.WriteLine("Pedidos pedentes\n");
             foreach (var pedido in filaDePedidos)
             {
-                Console.WriteLine(pedido);
+                Console.WriteLine($" Pedido #{pedido.Item1} - {pedido.Item2}");
             }
             break;
 
@@ -56,7 +58,7 @@ while (opcaoMenu != 5)
             Console.WriteLine("Pedidos concluídos:");
             foreach (var pedido in pilhaDePedidosConcluúdos)
             {
-                Console.WriteLine(pedido);
+                Console.WriteLine($" Pedido #{pedido.Item1} - {pedido.Item2}");
             }
             break;
 
