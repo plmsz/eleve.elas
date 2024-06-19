@@ -22,6 +22,7 @@ namespace Excessoes
                 List<string> lista = new List<string>() { "a", "b", "c" };
 
                 Console.WriteLine(lista[4]);
+                Console.WriteLine("builda");
             }
             catch (Exception e) when (e is NullReferenceException || e is ArgumentOutOfRangeException)
             {

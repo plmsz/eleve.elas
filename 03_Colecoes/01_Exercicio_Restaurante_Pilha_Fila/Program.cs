@@ -21,7 +21,7 @@ while (opcaoMenu != 5)
         case 1:
             Console.WriteLine("Digite o seu pedido:");
             numeroPedido++;
-            filaDePedidos.Enqueue((numeroPedido, Console.ReadLine() ?? "Pedido desconhecido"));
+            filaDePedidos.Enqueue((numeroPedido, Console.ReadLine() ?? ""));
             break;
 
         case 2:

@@ -17,7 +17,7 @@ namespace Teste_Cerveja
 
         public override string Descrever()
         {
-            return base.Descrever() + "A Spaten foi criada em 1397, em Munique, a capital mundial da cerveja, de intenso sabor de malte."; ;
+            return base.Descrever() + "A Spaten foi criada em 1397, em Munique, a capital mundial da cerveja, de intenso sabor de malte.";
         }
     }
 }
