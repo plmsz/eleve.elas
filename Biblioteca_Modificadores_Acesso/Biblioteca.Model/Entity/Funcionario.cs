@@ -8,7 +8,7 @@ public class Funcionario
     {
     }
 
-    protected void RemoverLivro(Livro livro) //daria para passar só o isbn do livro?
+    protected void RemoverLivro(Livro livro) //TODO: por que quando salva o private desaparece??
     {
     }
 
