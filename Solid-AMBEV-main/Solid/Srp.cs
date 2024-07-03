@@ -1,14 +1,12 @@
 ﻿namespace Solid
 {
-    public class Biblioteca
+    public class GerenciadorDeLivros
     {
-        private List<Livro> livros;
-        private Dictionary<string, RegistroEmprestimo> registrosEmprestimo;
+        private readonly List<Livro> livros;
 
-        public Biblioteca()
+        public GerenciadorDeLivros()
         {
-            this.livros = new List<Livro>();
-            this.registrosEmprestimo = new Dictionary<string, RegistroEmprestimo>();
+            this.livros = [];
         }
 
         // Métodos relacionados ao gerenciamento de livros
@@ -26,6 +24,12 @@
         {
             return livros;
         }
+    }
+
+    public class Emprestimo(List<Livro> livros, Dictionary<string, RegistroEmprestimo> registrosEmprestimo)
+    {
+        private readonly List<Livro> livros = livros;
+        private readonly Dictionary<string, RegistroEmprestimo> registrosEmprestimo = registrosEmprestimo;
 
         // Métodos relacionados ao empréstimo de livros
         public void EmprestarLivro(string usuarioId, Livro livro)
@@ -45,6 +49,11 @@
                 registrosEmprestimo.Remove(usuarioId);
             }
         }
+    }
+
+    public class Multa(Dictionary<string, RegistroEmprestimo> registrosEmprestimo)
+    {
+        private readonly Dictionary<string, RegistroEmprestimo> registrosEmprestimo = registrosEmprestimo;
 
         // Métodos relacionados ao cálculo de multas
         public double CalcularMulta(string usuarioId)
@@ -59,7 +68,10 @@
             }
             return 0.0;
         }
+    }
 
+    public class Repositorio
+    {
         // Métodos relacionados ao armazenamento em banco de dados
         public void SalvarDadosBiblioteca()
         {
@@ -70,32 +82,27 @@
         {
             // Código para carregar dados da biblioteca do banco de dados
         }
+    }
 
+    public class Relatorio
+    {
         // Métodos relacionados à geração de relatórios
         public void GerarRelatorio()
         {
             // Código para gerar relatório de status da biblioteca
         }
     }
-
     public class Livro
     {
         public string Titulo { get; set; }
         public string Autor { get; set; }
     }
 
-    public class RegistroEmprestimo
+    public class RegistroEmprestimo(string usuarioId, Livro livro, DateTime dataEmprestimo)
     {
-        public string UsuarioId { get; }
-        public Livro Livro { get; }
-        public DateTime DataEmprestimo { get; }
-
-        public RegistroEmprestimo(string usuarioId, Livro livro, DateTime dataEmprestimo)
-        {
-            UsuarioId = usuarioId;
-            Livro = livro;
-            DataEmprestimo = dataEmprestimo;
-        }
+        public string UsuarioId { get; } = usuarioId;
+        public Livro Livro { get; } = livro;
+        public DateTime DataEmprestimo { get; } = dataEmprestimo;
     }
 
 }
