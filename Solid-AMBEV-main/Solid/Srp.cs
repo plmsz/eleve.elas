@@ -1,5 +1,19 @@
 ﻿namespace Solid
 {
+    public class Biblioteca{
+        private readonly GerenciadorDeLivros gerenciadorDeLivros;
+        private readonly GerenciadorEmprestimo gerenciadorEmprestimo;
+        private readonly Repositorio repositorio;
+        private readonly Relatorio relatorio;
+
+        public Biblioteca(GerenciadorDeLivros gerenciadorDeLivros, GerenciadorEmprestimo gerenciadorEmprestimo, Repositorio repositorio, Relatorio relatorio)
+        {
+            this.gerenciadorDeLivros = gerenciadorDeLivros;
+            this.gerenciadorEmprestimo = gerenciadorEmprestimo;
+            this.repositorio = repositorio;
+            this.relatorio = relatorio;
+        }
+    }
     public class GerenciadorDeLivros
     {
         private readonly List<Livro> livros;
@@ -26,7 +40,7 @@
         }
     }
 
-    public class Emprestimo(List<Livro> livros, Dictionary<string, RegistroEmprestimo> registrosEmprestimo)
+    public class GerenciadorEmprestimo(List<Livro> livros, Dictionary<string, RegistroEmprestimo> registrosEmprestimo)
     {
         private readonly List<Livro> livros = livros;
         private readonly Dictionary<string, RegistroEmprestimo> registrosEmprestimo = registrosEmprestimo;
